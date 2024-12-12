@@ -3,25 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>בנייה מודולרית - פתרונות בנייה מתקדמים</title>
+    <title>פרסטיז' קונסטרקשן - בנייה מודולרית</title>
     <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+        }
+
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            color: #333;
         }
         
         header {
-            background-color: #2c3e50;
+            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)), url('header.jpg');
+            background-size: cover;
+            background-position: center;
             color: white;
-            padding: 2rem 0;
+            padding: 4rem 0;
             text-align: center;
         }
         
         nav {
-            background-color: #34495e;
+            background-color: var(--secondary-color);
             padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
         nav ul {
@@ -36,20 +48,64 @@
         nav a {
             color: white;
             text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: var(--accent-color);
         }
         
         .hero {
-            background-color: #ecf0f1;
-            padding: 4rem 2rem;
             text-align: center;
+            padding: 6rem 2rem;
+            background-color: #f8f9fa;
         }
         
-        .benefits {
-            padding: 3rem 2rem;
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
             background-color: white;
         }
         
-        .benefits-grid {
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .features {
+            padding: 4rem 2rem;
+            background-color: #f8f9fa;
+        }
+        
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
@@ -57,15 +113,59 @@
             margin: 0 auto;
         }
         
-        .benefit-card {
-            background-color: #f8f9fa;
-            padding: 1.5rem;
+        .feature-card {
+            background-color: white;
+            padding: 2rem;
             border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             text-align: center;
         }
         
-        .contact {
-            background-color: #2c3e50;
+        .contact-form {
+            max-width: 600px;
+            margin: 4rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .btn {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
             color: white;
             padding: 3rem 2rem;
             text-align: center;
@@ -76,63 +176,122 @@
             margin: 0 auto;
             padding: 0 1rem;
         }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>בנייה מודולרית</h1>
-            <p>פתרונות בנייה מתקדמים לעידן המודרני</p>
+            <h1>פרסטיז' קונסטרקשן</h1>
+            <p>חווית בנייה מודולרית מתקדמת</p>
         </div>
     </header>
 
     <nav>
         <ul>
             <li><a href="#about">אודות</a></li>
-            <li><a href="#benefits">יתרונות</a></li>
-            <li><a href="#projects">פרויקטים</a></li>
+            <li><a href="#gallery">גלריה</a></li>
+            <li><a href="#features">יתרונות</a></li>
+            <li><a href="#process">תהליך העבודה</a></li>
             <li><a href="#contact">צור קשר</a></li>
         </ul>
     </nav>
 
     <section class="hero">
         <div class="container">
-            <h2>בנייה מודולרית - העתיד כבר כאן</h2>
-            <p>בנייה מודולרית היא שיטת בנייה מתקדמת המאפשרת הקמת מבנים איכותיים בזמן קצר ובעלות משתלמת</p>
+            <h2>הדור הבא של הבנייה</h2>
+            <p>אנו מתמחים בבנייה מודולרית מתקדמת המשלבת איכות, מהירות וחדשנות. הפתרונות שלנו מאפשרים חיסכון משמעותי בזמן ובעלויות, תוך שמירה על סטנדרטים גבוהים ואיכות בלתי מתפשרת.</p>
         </div>
     </section>
 
-    <section class="benefits">
+    <section id="gallery" class="gallery">
         <div class="container">
-            <h2>יתרונות הבנייה המודולרית</h2>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <h3>חיסכון בזמן</h3>
-                    <p>זמן בנייה מהיר משמעותית בהשוואה לבנייה קונבנציונלית</p>
+            <h2>הפרויקטים שלנו</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="project1.jpg" alt="פרויקט 1">
+                    <h3>בית מודולרי פרטי</h3>
                 </div>
-                <div class="benefit-card">
-                    <h3>איכות גבוהה</h3>
-                    <p>ייצור בתנאים מבוקרים המבטיח איכות ועמידה בתקנים</p>
+                <div class="gallery-item">
+                    <img src="project2.jpg" alt="פרויקט 2">
+                    <h3>מבנה משרדים</h3>
                 </div>
-                <div class="benefit-card">
-                    <h3>חיסכון בעלויות</h3>
-                    <p>התייעלות בתהליך הייצור מובילה לחיסכון משמעותי בעלויות</p>
-                </div>
-                <div class="benefit-card">
-                    <h3>גמישות בתכנון</h3>
-                    <p>אפשרויות רבות לתכנון והתאמה אישית של המבנה</p>
+                <div class="gallery-item">
+                    <img src="project3.jpg" alt="פרויקט 3">
+                    <h3>מתחם מסחרי</h3>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="contact">
+    <section id="features" class="features">
         <div class="container">
-            <h2>צור קשר</h2>
-            <p>מעוניינים לשמוע עוד על פתרונות הבנייה המודולרית שלנו?</p>
-            <p>טלפון: 03-1234567</p>
-            <p>דוא"ל: info@modular-construction.co.il</p>
+            <h2>למה לבחור בבנייה מודולרית?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>חיסכון בזמן</h3>
+                    <p>תהליך בנייה מהיר ויעיל המקצר משמעותית את זמני ההקמה</p>
+                </div>
+                <div class="feature-card">
+                    <h3>איכות גבוהה</h3>
+                    <p>ייצור בתנאים מבוקרים המבטיח איכות ועמידה בתקנים המחמירים ביותר</p>
+                </div>
+                <div class="feature-card">
+                    <h3>חיסכון בעלויות</h3>
+                    <p>תהליך ייצור יעיל המוביל לחיסכון משמעותי בעלויות הבנייה</p>
+                </div>
+                <div class="feature-card">
+                    <h3>גמישות בתכנון</h3>
+                    <p>אפשרויות רבות להתאמה אישית של המבנה לצרכים המדויקים שלכם</p>
+                </div>
+            </div>
         </div>
     </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>צור קשר</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">שם מלא</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">אימייל</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">טלפון</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">הודעה</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn">שליחה</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 פרסטיז' קונסטרקשן. כל הזכויות שמורות.</p>
+            <div class="footer-contact">
+                <p>טלפון: 03-1234567</p>
+                <p>דוא"ל: info@prestige-construction.co.il</p>
+                <p>כתובת: רחוב הבונים 1, תל אביב</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
